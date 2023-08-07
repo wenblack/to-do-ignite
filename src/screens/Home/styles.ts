@@ -75,5 +75,8 @@ export const styles = StyleSheet.create({
     marginHorizontal: 24,
     marginTop: 20,
     marginBottom: 48
+  },imgListEmpty:{
+    height:56,
+    width:56
   }
 })

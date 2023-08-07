@@ -1,6 +1,5 @@
 import { Text, TextInput, View, TouchableOpacity, FlatList, Alert, Image } from "react-native"
 import { styles } from "./styles"
-import { Participant } from "../../components/Participants"
 import { useState } from "react"
 import { TaskCount } from "../../components/TaskCount"
 import { Task } from "../../components/Tasks"
@@ -10,11 +9,11 @@ export function Home() {
   const [createdTasks, setCreatedTask] = useState(0)
   const [completedTask, setCompletedTask] = useState(0)
   const [newTask, setName] = useState('')
-  const [lastTaskComplete, setLastTaskComplete] = useState(false)
+  const [lastTaskType,setLastTaskType] = useState('')
 
   function handleAddTask() {
     if (tasks.includes(newTask)) {
-      return Alert.alert('Participante já existe', 'Já existe um participante na lista com esse nome')
+      return Alert.alert('Tarefa já cadastrada', 'Já existe uma tarefa com esse nome')
     }
     setTask(prevState => [...prevState, newTask])
     setName('')
@@ -22,39 +21,33 @@ export function Home() {
   }
 
   function completeTask() {
-    setCreatedTask(createdTasks + 1)
-    setCompletedTask(completedTask - 1)
-    setLastTaskComplete(false)
+    setCreatedTask(createdTasks - 1)
+    setCompletedTask(completedTask + 1)
+    setLastTaskType('completed')
   }
 
   function setNewTask() {
-    setCreatedTask(createdTasks - 1)
-    setCompletedTask(completedTask + 1)
-    setLastTaskComplete(true)
+    setCreatedTask(createdTasks + 1)
+    setCompletedTask(completedTask - 1)
+    setLastTaskType('created')
   }
 
-  function updateCount() {
-    if (lastTaskComplete) {
-      completeTask()
-    } else {
-      setNewTask()
-    }
-  }
+
 
   function handleRemovTask(name: string) {
-    function deleteParticipant() {
+    function deleteTask() {
       setTask(prevState => prevState.filter(tasks => tasks != name))
       Alert.alert('Deletado')
-      if (lastTaskComplete) {
-        setCompletedTask(prevState => prevState - 1)
-      } else {
-        setCreatedTask(prevState => prevState - 1)
+      if(lastTaskType==='created'){
+        setCreatedTask(createdTasks-1)
+      }else{
+        setCompletedTask(completedTask-1)
       }
     }
-    Alert.alert('Remover', `Tem certeza que deseja remover o participante ${name}?`, [
+    Alert.alert('Remover', `Tem certeza que deseja remover a tarefa ${name}?`, [
       {
         text: 'Sim',
-        onPress: deleteParticipant,
+        onPress: deleteTask,
       },
       {
         text: 'Não',
@@ -103,7 +96,7 @@ export function Home() {
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (
           <View style={styles.listEmptyText}>
-            <Image source={require('../../assets/Clipboard.png')}></Image>
+            <Image style={styles.imgListEmpty} source={require('../../assets/Clipboard.png')}></Image>
             <Text style={styles.listEmptyTitle}>
               Você ainda não tem tarefas cadastradas
             </Text>
@@ -116,7 +109,8 @@ export function Home() {
           <Task
             title={item}
             key={index}
-            completedFunction={updateCount}
+            completedFunction={completeTask}
+            createdFunction={setNewTask}
             deleteFunction={() => handleRemovTask(item)}
           />
         )}

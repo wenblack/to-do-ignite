@@ -5,15 +5,30 @@ export const styles = StyleSheet.create({
     backgroundColor: '#333333',
     flexDirection: 'row',
     marginHorizontal: 24,
-    gap: 6
+    paddingHorizontal:8,
+    gap: 6,
+    alignItems:'center',
+    borderRadius:10,
+    marginBottom:8
   },
   textTaskCreated: {
     fontSize: 14,
-    color: "#F2F2F2"
+    color: "#F2F2F2",
+    width:'100%',
+    paddingVertical:18,
   },
   textTaskCompleted: {
     fontSize: 14,
     color: "#808080",
-    textDecorationStyle: 'dashed'
+    paddingVertical:18,
+    textDecorationLine:'line-through',
+    width:'100%',
+    textDecorationColor: "#808080",
+  },imgCheckBox:{
+    height:24,
+    width:24
+  },imgTrashIcon:{
+    height:32,
+    width:32
   }
 })
