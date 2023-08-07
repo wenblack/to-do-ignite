@@ -18,6 +18,7 @@ export function Home() {
     setTask(prevState => [...prevState, newTask])
     setName('')
     setCreatedTask(prevState => prevState + 1)
+    setLastTaskType('created')
   }
 
   function completeTask() {
