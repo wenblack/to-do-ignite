@@ -6,22 +6,25 @@ import { TaskCount } from "../../components/TaskCount"
 
 
 export function Home() {
-  const [peoples, setPeople] = useState<string[]>([])
-  const [name, setName] = useState('')
+  const [tasks, setTask] = useState<string[]>([])
+  const [createdTasks, setCreatedTask] = useState(0)
+  const [completedTask, setCompletedTask] = useState(0)
+  const [newTask, setName] = useState('')
 
 
   function handleParticipantAdd() {
-    if (peoples.includes(name)) {
+    if (tasks.includes(newTask)) {
       return Alert.alert('Participante já existe', 'Já existe um participante na lista com esse nome')
     }
-    setPeople(prevState => [...prevState, name])
+    setTask(prevState => [...prevState, newTask])
     setName('')
+    setCreatedTask(prevState => prevState + 1)
   }
 
   function handleParticipantRemove(name: string) {
 
     function deleteParticipant() {
-      setPeople(prevState => prevState.filter(peoples => peoples != name))
+      setTask(prevState => prevState.filter(tasks => tasks != name))
       Alert.alert('Deletado')
     }
     Alert.alert('Remover', `Tem certeza que deseja remover o participante ${name}?`, [
@@ -49,7 +52,7 @@ export function Home() {
           placeholder="Adicione uma nova tarefa"
           placeholderTextColor="#808080"
           onChangeText={setName}
-          value={name}
+          value={newTask}
           onSubmitEditing={handleParticipantAdd}
         />
 
@@ -61,7 +64,7 @@ export function Home() {
       <View style={styles.countContainer}>
         <TaskCount
           type="created"
-          count={0}
+          count={createdTasks}
         />
         <TaskCount
           type="completed"
@@ -71,7 +74,7 @@ export function Home() {
       <View style={styles.divider} />
 
       <FlatList
-        data={peoples}
+        data={tasks}
         keyExtractor={item => item}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (
