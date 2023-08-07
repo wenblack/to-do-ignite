@@ -3,16 +3,16 @@ import { styles } from "./styles"
 import { Participant } from "../../components/Participants"
 import { useState } from "react"
 import { TaskCount } from "../../components/TaskCount"
-
+import { Task } from "../../components/Tasks"
 
 export function Home() {
   const [tasks, setTask] = useState<string[]>([])
   const [createdTasks, setCreatedTask] = useState(0)
   const [completedTask, setCompletedTask] = useState(0)
   const [newTask, setName] = useState('')
+  const [lastTaskComplete, setLastTaskComplete] = useState(false)
 
-
-  function handleParticipantAdd() {
+  function handleAddTask() {
     if (tasks.includes(newTask)) {
       return Alert.alert('Participante já existe', 'Já existe um participante na lista com esse nome')
     }
@@ -21,11 +21,35 @@ export function Home() {
     setCreatedTask(prevState => prevState + 1)
   }
 
-  function handleParticipantRemove(name: string) {
+  function completeTask() {
+    setCreatedTask(createdTasks + 1)
+    setCompletedTask(completedTask - 1)
+    setLastTaskComplete(false)
+  }
 
+  function setNewTask() {
+    setCreatedTask(createdTasks - 1)
+    setCompletedTask(completedTask + 1)
+    setLastTaskComplete(true)
+  }
+
+  function updateCount() {
+    if (lastTaskComplete) {
+      completeTask()
+    } else {
+      setNewTask()
+    }
+  }
+
+  function handleRemovTask(name: string) {
     function deleteParticipant() {
       setTask(prevState => prevState.filter(tasks => tasks != name))
       Alert.alert('Deletado')
+      if (lastTaskComplete) {
+        setCompletedTask(prevState => prevState - 1)
+      } else {
+        setCreatedTask(prevState => prevState - 1)
+      }
     }
     Alert.alert('Remover', `Tem certeza que deseja remover o participante ${name}?`, [
       {
@@ -53,10 +77,10 @@ export function Home() {
           placeholderTextColor="#808080"
           onChangeText={setName}
           value={newTask}
-          onSubmitEditing={handleParticipantAdd}
+          onSubmitEditing={handleAddTask}
         />
 
-        <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
+        <TouchableOpacity style={styles.button} onPress={handleAddTask}>
           <Image style={styles.plusIcon} source={require('../../assets/plus.png')} />
         </TouchableOpacity>
       </View>
@@ -68,7 +92,7 @@ export function Home() {
         />
         <TaskCount
           type="completed"
-          count={0}
+          count={completedTask}
         />
       </View>
       <View style={styles.divider} />
@@ -89,17 +113,14 @@ export function Home() {
           </View>
         )}
         renderItem={({ item, index }) => (
-          <Participant
-            name={item}
+          <Task
+            title={item}
             key={index}
-            pressed={() => handleParticipantRemove(item)}
+            completedFunction={updateCount}
+            deleteFunction={() => handleRemovTask(item)}
           />
         )}
       />
-
-
-
-
     </View>
   )
 }
