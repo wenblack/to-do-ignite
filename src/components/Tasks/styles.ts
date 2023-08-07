@@ -9,12 +9,12 @@ export const styles = StyleSheet.create({
     gap: 6,
     alignItems:'center',
     borderRadius:10,
-    marginBottom:8
+    marginBottom:8,
+    justifyContent:'space-between'
   },
   textTaskCreated: {
     fontSize: 14,
     color: "#F2F2F2",
-    width:'90%',
     paddingVertical:18,
   },
   textTaskCompleted: {
@@ -22,7 +22,6 @@ export const styles = StyleSheet.create({
     color: "#808080",
     paddingVertical:18,
     textDecorationLine:'line-through',
-    width:'90%',
     textDecorationColor: "#808080",
   },imgCheckBox:{
     height:24,
