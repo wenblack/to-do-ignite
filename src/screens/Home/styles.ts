@@ -4,21 +4,10 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#131016',
-    padding: 24
-  },
-  eventName: {
-    color: '#FFF',
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginTop: 48
-  },
-  eventDate: {
-    color: '#6B6B6B',
-    fontSize: 16
   },
   input: {
-    height: 56,
-    backgroundColor: '#1F1E25',
+    height: 54,
+    backgroundColor: '#262626',
     borderRadius: 5,
     color: '#FFFF',
     padding: 16,
@@ -33,19 +22,37 @@ export const styles = StyleSheet.create({
     width: 56,
     height: 56,
     borderRadius: 5,
-    backgroundColor: '#31CF67',
+    backgroundColor: '#1E6F9F',
     alignItems: 'center',
     justifyContent: 'center'
   },
   form: {
-    marginTop: 36,
+    marginTop: 48,
     marginBottom: 42,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'center',
+    paddingHorizontal: 24,
+    gap: 8
   },
   listEmptyText: {
     color: '#fff',
     fontSize: 14,
     textAlign: 'justify'
+  },
+  logo: {
+    alignSelf: 'center',
+    height: 32,
+    width: 110,
+    marginTop: 48
+  },
+  plusIcon: {
+    height: 15, width: 15
+  },
+  headerContainer: {
+    position: 'absolute',
+    backgroundColor: 'black',
+    height: 153,
+    width: '100%',
+    marginBottom: -40
   }
 })

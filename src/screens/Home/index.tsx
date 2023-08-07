@@ -1,7 +1,8 @@
-import { Text, TextInput, View, TouchableOpacity, FlatList, Alert } from "react-native"
+import { Text, TextInput, View, TouchableOpacity, FlatList, Alert, Image } from "react-native"
 import { styles } from "./styles"
 import { Participant } from "../../components/Participants"
 import { useState } from "react"
+
 
 export function Home() {
   const [peoples, setPeople] = useState<string[]>([])
@@ -36,30 +37,28 @@ export function Home() {
   }
   return (
     <View style={styles.container}>
-      <Text style={styles.eventName}>
-        Nome do evento
-      </Text>
-
-      <Text style={styles.eventDate}>
-        Sexta, 4 de Novembro de 2022.
-      </Text>
-
+      <View style={styles.headerContainer}>
+      </View>
+      <Image
+        source={require('../../assets/Logo.png')}
+        style={styles.logo}
+      />
       <View style={styles.form}>
         <TextInput
           style={styles.input}
-          placeholder="Nome do participante"
-          placeholderTextColor="#6B6B6B"
+          placeholder="Adicione uma nova tarefa"
+          placeholderTextColor="#808080"
           onChangeText={setName}
           value={name}
           onSubmitEditing={handleParticipantAdd}
         />
 
         <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
-          <Text style={styles.buttonText}>
-            +
-          </Text>
+          <Image style={styles.plusIcon} source={require('../../assets/plus.png')} />
         </TouchableOpacity>
       </View>
+
+
 
 
 
