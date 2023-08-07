@@ -35,9 +35,7 @@ export const styles = StyleSheet.create({
     gap: 8
   },
   listEmptyText: {
-    color: '#fff',
-    fontSize: 14,
-    textAlign: 'justify'
+    alignItems: 'center'
   },
   logo: {
     alignSelf: 'center',
@@ -54,5 +52,28 @@ export const styles = StyleSheet.create({
     height: 153,
     width: '100%',
     marginBottom: -40
+  },
+  listEmptySubtitle: {
+    color: "#808080",
+    fontSize: 14
+  },
+  listEmptyTitle: {
+    marginTop: 16,
+    color: "#808080",
+    fontWeight: 'bold',
+    fontSize: 14
+  },
+  countContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: 24,
+    justifyContent: 'space-between'
+  },
+  divider: {
+    backgroundColor: '#333333',
+    flexDirection: 'row',
+    height: 1,
+    marginHorizontal: 24,
+    marginTop: 20,
+    marginBottom: 48
   }
 })

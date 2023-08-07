@@ -2,6 +2,7 @@ import { Text, TextInput, View, TouchableOpacity, FlatList, Alert, Image } from 
 import { styles } from "./styles"
 import { Participant } from "../../components/Participants"
 import { useState } from "react"
+import { TaskCount } from "../../components/TaskCount"
 
 
 export function Home() {
@@ -37,8 +38,7 @@ export function Home() {
   }
   return (
     <View style={styles.container}>
-      <View style={styles.headerContainer}>
-      </View>
+      <View style={styles.headerContainer} />
       <Image
         source={require('../../assets/Logo.png')}
         style={styles.logo}
@@ -58,17 +58,32 @@ export function Home() {
         </TouchableOpacity>
       </View>
 
-
-
-
-
+      <View style={styles.countContainer}>
+        <TaskCount
+          type="created"
+          count={0}
+        />
+        <TaskCount
+          type="completed"
+          count={0}
+        />
+      </View>
+      <View style={styles.divider} />
 
       <FlatList
         data={peoples}
         keyExtractor={item => item}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (
-          <Text style={styles.listEmptyText}>Ninguém chegou ao evento ainda? Adicione participantes a sua lista de presença.</Text>
+          <View style={styles.listEmptyText}>
+            <Image source={require('../../assets/Clipboard.png')}></Image>
+            <Text style={styles.listEmptyTitle}>
+              Você ainda não tem tarefas cadastradas
+            </Text>
+            <Text style={styles.listEmptySubtitle}>
+              Crie tarefas e organize seus itens a fazer
+            </Text>
+          </View>
         )}
         renderItem={({ item, index }) => (
           <Participant
