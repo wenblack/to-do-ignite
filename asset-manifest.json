@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/to-do-ignite/static/js/main.60251e84.js",
+    "static/js/343.2c5d9fab.js": "/to-do-ignite/static/js/343.2c5d9fab.js",
+    "favicon.ico": "/to-do-ignite/favicon.ico",
+    "static/media/Logo.png": "/to-do-ignite/static/media/Logo.6cbfd174e7b41ce237ef.png",
+    "index.html": "/to-do-ignite/index.html",
+    "static/media/Clipboard.png": "/to-do-ignite/static/media/Clipboard.a0cb882894115d9d8136.png",
+    "favicon-32.png": "/to-do-ignite/favicon-32.png",
+    "static/media/plus.png": "/to-do-ignite/static/media/plus.24be4b27be9ac5742d9a.png",
+    "static/media/check.png": "/to-do-ignite/static/media/check.c0dd04ba32b7022571b0.png",
+    "favicon-16.png": "/to-do-ignite/favicon-16.png",
+    "manifest.json": "/to-do-ignite/manifest.json",
+    "serve.json": "/to-do-ignite/serve.json",
+    "main.60251e84.js.map": "/to-do-ignite/static/js/main.60251e84.js.map",
+    "343.2c5d9fab.js.map": "/to-do-ignite/static/js/343.2c5d9fab.js.map"
+  },
+  "entrypoints": [
+    "static/js/343.2c5d9fab.js",
+    "static/js/main.60251e84.js"
+  ]
+}
