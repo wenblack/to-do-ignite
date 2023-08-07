@@ -1,0 +1,9 @@
+{
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "lang": "en",
+  "name": "To-Do Ignite",
+  "short_name": "To-Do Ignite",
+  "start_url": "/?utm_source=web_app_manifest",
+  "orientation": "portrait"
+}
