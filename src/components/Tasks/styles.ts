@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
   textTaskCreated: {
     fontSize: 14,
     color: "#F2F2F2",
-    width:'100%',
+    width:'90%',
     paddingVertical:18,
   },
   textTaskCompleted: {
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     color: "#808080",
     paddingVertical:18,
     textDecorationLine:'line-through',
-    width:'100%',
+    width:'90%',
     textDecorationColor: "#808080",
   },imgCheckBox:{
     height:24,
